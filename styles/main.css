@@ -1,0 +1,7 @@
+#foundry3d-canvas {
+    position: absolute;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+    background: transparent;
+}

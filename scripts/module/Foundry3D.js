@@ -26,7 +26,7 @@ export class Foundry3D {
     }
 
     _setupCanvas() {
-        this.canvas = $('<canvas id="foundry3d-canvas" style="position: absolute; left: 0; top: 0;pointer-events: none;"></canvas>');
+        this.canvas = $('<canvas id="foundry3d-canvas"></canvas>');
         switch (Foundry3D.CONFIG.canvasPosition) {
             case ECanvasPositions.OVER_SCENE:
                 this.canvas.css('z-index', 1000);
@@ -53,11 +53,12 @@ export class Foundry3D {
         this._scene = new BABYLON.Scene(this._engine);
 
         const camera = new BABYLON.ArcRotateCamera("Camera", Math.PI / 2, Math.PI / 2, 2, BABYLON.Vector3.Zero(), this._scene);
-        camera.attachControl(this.canvas[0], true);
+        //camera.attachControl(this.canvas[0], true);
 
         const light = new BABYLON.HemisphericLight("Light", new BABYLON.Vector3(1, 1, 0), this._scene);
         const sphere = BABYLON.MeshBuilder.CreateSphere("Sphere", { diameter: 1 }, this._scene);
 
+        this._scene.clearColor = new BABYLON.Color4(0, 0, 0, 0);
         this._engine.runRenderLoop(() => {
             this._scene.render();
         });

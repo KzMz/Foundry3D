@@ -17,12 +17,10 @@ export class Foundry3D {
 
         this._setupCanvas();
         this._initListeners();
-        this._setupEngine();
+        this._setupEngineAndScene();
         this._resizeCanvas();
 
         this._welcomeMessage();
-
-        Hooks.call("foundry3dReady", this);
     }
 
     _setupCanvas() {
@@ -48,20 +46,15 @@ export class Foundry3D {
         this._engine.resize();
     }
 
-    _setupEngine() {
+    _setupEngineAndScene() {
         this._engine = new BABYLON.Engine(this.canvas[0], true);
         this._scene = new BABYLON.Scene(this._engine);
+    }
 
-        const camera = new BABYLON.ArcRotateCamera("Camera", Math.PI / 2, Math.PI / 2, 2, BABYLON.Vector3.Zero(), this._scene);
-        //camera.attachControl(this.canvas[0], true);
-
+    _prepareSceneItems() {
+        const camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(0, 0, -10), this._scene);
+        camera.attachControl(this.canvas, true);
         const light = new BABYLON.HemisphericLight("Light", new BABYLON.Vector3(1, 1, 0), this._scene);
-        const sphere = BABYLON.MeshBuilder.CreateSphere("Sphere", { diameter: 1 }, this._scene);
-
-        this._scene.clearColor = new BABYLON.Color4(0, 0, 0, 0);
-        this._engine.runRenderLoop(() => {
-            this._scene.render();
-        });
     }
 
     _initListeners() {
@@ -76,6 +69,32 @@ export class Foundry3D {
 
     needsReload(settings) {
         return settings.canvasPosition !== this.canvasPosition;
+    }
+
+    startRendering() {
+        this._prepareSceneItems();
+
+        this._scene.clearColor = new BABYLON.Color4(0, 0, 0, 0);
+        this._engine.runRenderLoop(() => {
+            this._scene.render();
+        });
+
+        Hooks.call("foundry3dReady", this);
+    }
+
+    load3DTokens(tokens) {
+        Object.keys(tokens).forEach(key => {
+            const token = tokens[key].token;
+            const foundryScene = token.scene;
+            const h = token.scene.height;
+            const w = token.scene.width;
+            const x = token.x;
+            const y = token.y;
+            const gridSize = foundryScene.data.grid;
+
+            const sphere = BABYLON.MeshBuilder.CreateSphere("Sphere", { diameter: 1 }, this._scene);
+            sphere.position = new BABYLON.Vector3(x / w, y / h, 0);
+        });
     }
 
     updateSoftSettings(settings) {

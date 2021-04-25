@@ -10,11 +10,9 @@ Hooks.once('init', async function() {
         onChange: settings => {
             if (!game.foundry3d) return;
 
-            // @ts-ignore
             if (game.foundry3d.needsReload(settings)) {
                 location.reload();
             } else {
-                // @ts-ignore
                 game.foundry3d.updateSoftSettings(settings);
             }
         }
@@ -23,4 +21,7 @@ Hooks.once('init', async function() {
 
 Hooks.once('ready', async function() {
     game.foundry3d = new Foundry3D();
+
+    game.foundry3d.startRendering();
+    game.foundry3d.load3DTokens(game.actors.tokens);
 });

@@ -24,7 +24,8 @@
     "/scripts/main.js"
   ],
   "scripts": [
-    "/scripts/libs/babylon.max.js"
+    "/scripts/libs/babylon.max.js",
+    "/scripts/libs/babylon.gui.js"
   ],
   "styles": [
     "/styles/main.css"

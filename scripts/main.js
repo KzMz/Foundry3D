@@ -1,4 +1,5 @@
-import { Foundry3D } from "./module/Foundry3D.js";
+import { BABYLON, Foundry3D } from "./module/Foundry3D.js";
+import { UIPosition } from "./module/UIPosition.js";
 
 Hooks.once('init', async function() {
     game.settings.register("foundry3d", "settings", {
@@ -22,6 +23,13 @@ Hooks.once('init', async function() {
 Hooks.once('ready', async function() {
     game.foundry3d = new Foundry3D();
 
+    /*const pos = new UIPosition();
+    pos.horizontalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_LEFT;
+    pos.verticalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_TOP;
+
+    let p = game.foundry3d.addPlane2D("transparent", "white", pos);
+    game.foundry3d.addImage2D("../assets/meruk.png", undefined, pos, p);
+    game.foundry3d.fadeIn2DElement(p, 10);*/
+
     game.foundry3d.startRendering();
-    game.foundry3d.load3DTokens(game.actors.tokens);
 });

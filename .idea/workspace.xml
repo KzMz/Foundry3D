@@ -2,10 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c93326b-fc57-448d-825b-24fbd69aa413" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/scripts/module/FontInfo.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/module/UIPosition.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/module.json" beforeDir="false" afterPath="$PROJECT_DIR$/module.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/module/Foundry3D.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/module/Foundry3D.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/main.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,6 +86,7 @@
       <workItem from="1617638388942" duration="16000" />
       <workItem from="1617665343161" duration="1610000" />
       <workItem from="1617728475086" duration="6000" />
+      <workItem from="1619371021865" duration="5237000" />
     </task>
     <servers />
   </component>

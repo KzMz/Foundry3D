@@ -1,5 +1,6 @@
 import { ECanvasPositions } from "./CanvasPositions.js";
 import { UIPosition } from "./UIPosition.js";
+import {FontInfo} from "./FontInfo.js";
 
 export const BABYLON = window.BABYLON;
 
@@ -14,6 +15,14 @@ export class Foundry3D {
 
     static get CONFIG() {
          return mergeObject(Foundry3D.DEFAULT_OPTIONS, game.settings.get("foundry3d", "settings"));
+    }
+
+    createUIPosition() {
+        return new UIPosition();
+    }
+
+    createFontInfo() {
+        return new FontInfo();
     }
 
     constructor() {

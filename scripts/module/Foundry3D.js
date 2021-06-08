@@ -180,7 +180,6 @@ export class Foundry3D {
 
     addImage2D(imagePath, stretchType, uiPosition, parent) {
         const image2d = new BABYLON.GUI.Image("FoundryImage", imagePath);
-        image2d.autoScale = true;
         if (stretchType) {
             image2d.stretch = stretchType;
         } else {
@@ -188,6 +187,8 @@ export class Foundry3D {
         }
 
         this._applyPositionToUIElement(image2d, uiPosition);
+        image2d.scaleX = 0.2;
+        image2d.scaleY = 0.2;
 
         if (parent) {
             parent.addControl(image2d);

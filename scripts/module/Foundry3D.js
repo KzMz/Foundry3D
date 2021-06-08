@@ -187,8 +187,8 @@ export class Foundry3D {
         }
 
         this._applyPositionToUIElement(image2d, uiPosition);
-        image2d.scaleX = 0.2;
-        image2d.scaleY = 0.2;
+        image2d.scaleX = uiPosition.width;
+        image2d.scaleY = uiPosition.height;
 
         if (parent) {
             parent.addControl(image2d);

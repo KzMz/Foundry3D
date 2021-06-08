@@ -183,6 +183,7 @@ export class Foundry3D {
 
     addImage2D(imagePath, stretchType, uiPosition, parent) {
         const image2d = new BABYLON.GUI.Image("FoundryImage", imagePath);
+        image2d.autoScale = true;
         if (stretchType) {
             image2d.stretch = stretchType;
         } else {

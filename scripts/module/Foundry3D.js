@@ -115,6 +115,9 @@ export class Foundry3D {
 
         if (uiPosition.width) element.width = uiPosition.width;
         if (uiPosition.height) element.height = uiPosition.height;
+
+        element.scaleX = uiPosition.scaleX;
+        element.scaleY = uiPosition.scaleY;
     }
 
     fadeIn2DElement(element, speed) {
@@ -187,8 +190,6 @@ export class Foundry3D {
         }
 
         this._applyPositionToUIElement(image2d, uiPosition);
-        image2d.scaleX = uiPosition.width;
-        image2d.scaleY = uiPosition.height;
 
         if (parent) {
             parent.addControl(image2d);
